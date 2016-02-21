@@ -1,0 +1,12 @@
+# Cocos2d-x
+cocos2d/
+bin/
+proj.*/
+*.log
+
+# Mac
+.DS_Store
+
+# IDE
+*.sublime-project
+*.sublime-workspace

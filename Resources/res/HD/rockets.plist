@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>rocket-0.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{44,99}</string>
+                <key>spriteSourceSize</key>
+                <string>{44,99}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{44,99}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>realTextureFileName</key>
+            <string>rockets.png</string>
+            <key>size</key>
+            <string>{46,101}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:5f4bd3f3277fca2911b4de726c2759ca:42aa1dddc16da9652dcac78f609c4f2b:23ba688e9beedead50d7b676f3524196$</string>
+            <key>textureFileName</key>
+            <string>rockets.png</string>
+        </dict>
+    </dict>
+</plist>
