@@ -10,16 +10,16 @@ private:
 	cocos2d::Size _visibleSize;
 	cocos2d::Vec2 _visibleOrigin;
 
-	cocos2d::PhysicsWorld *_sceneWorld;
+	// cocos2d::PhysicsWorld *_sceneWorld;
 
 	cocos2d::SpriteFrameCache *_spriteCache;
 	// cocos2d::Sprite *_rocket;
 
 	Rocket _rocket;
 
-	void _setPhysicsWorld(cocos2d::PhysicsWorld *world) {
-		_sceneWorld = world;
-	}
+	// void _setPhysicsWorld(cocos2d::PhysicsWorld *world) {
+	// 	_sceneWorld = world;
+	// }
 
 	void _spawnRocket();
 

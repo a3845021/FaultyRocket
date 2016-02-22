@@ -5,12 +5,12 @@ USING_NS_CC;
 
 Scene* GameScene::createScene() {
 	// 'scene' is an autorelease object
-	auto scene = Scene::createWithPhysics();
-	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	auto scene = Scene::create();
+	// scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
 	// 'layer' is an autorelease object
 	auto layer = GameScene::create();
-	layer->_setPhysicsWorld(scene->getPhysicsWorld());
+	// layer->_setPhysicsWorld(scene->getPhysicsWorld());
 
 	// add layer as a child to scene
 	scene->addChild(layer);
@@ -37,15 +37,15 @@ bool GameScene::init() {
 	_spriteCache->addSpriteFramesWithFile("rockets.plist");
 
 	// edge world
-	auto edgeBody = PhysicsBody::createEdgeBox(_visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
-	auto edgeNode = Node::create();
-	edgeNode->setPosition(Point(_visibleSize.width * 0.5f + _visibleOrigin.x,
-	                            _visibleSize.height * 0.5f + _visibleOrigin.y));
-	edgeNode->setPhysicsBody(edgeBody);
-	this->addChild(edgeNode);
+	// auto edgeBody = PhysicsBody::createEdgeBox(_visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+	// auto edgeNode = Node::create();
+	// edgeNode->setPosition(Point(_visibleSize.width * 0.5f + _visibleOrigin.x,
+	//                             _visibleSize.height * 0.5f + _visibleOrigin.y));
+	// edgeNode->setPhysicsBody(edgeBody);
+	// this->addChild(edgeNode);
 
 	// spawn rocket
-	GameScene::_spawnRocket();
+	_spawnRocket();
 
 	// this->schedule(schedule_selector(GameScene::_spawnRocket), ROCKET_SPAWN_FREQUENCY * _visibleSize.height);
 
