@@ -11,7 +11,7 @@ typedef struct tagResource {
 static Resource ultraResource = { cocos2d::Size(1536, 2048), "res/HDR" };
 static Resource hiResource = { cocos2d::Size(768, 1024), "res/HD" };
 static Resource stdResource = { cocos2d::Size(384, 512), "res/SD" };
-static cocos2d::Size designResolutionSize = cocos2d::Size(1536, 2048);
+static cocos2d::Size designResolutionSize = cocos2d::Size(768, 1024);
 
 AppDelegate::AppDelegate() {
 
@@ -36,13 +36,13 @@ static int register_all_packages() {
 	return 0; //flag for packages manager
 }
 
-void AppDelegate::initDirector() {
+void AppDelegate::_initDirector() {
 	auto director = Director::getInstance();
 	director->setAnimationInterval(1.0 / 60);
 	director->setDisplayStats(true);
 }
 
-void AppDelegate::initOpenGL() {
+void AppDelegate::_initOpenGL() {
 	auto director = Director::getInstance();
 	auto glview = director->getOpenGLView();
 	if (!glview) {
@@ -55,7 +55,7 @@ void AppDelegate::initOpenGL() {
 	}
 }
 
-void AppDelegate::initMultiResolution() {
+void AppDelegate::_initMultiResolution() {
 	auto director = Director::getInstance();
 	auto glview = director->getOpenGLView();
 
@@ -87,17 +87,17 @@ void AppDelegate::initMultiResolution() {
 	FileUtils::getInstance()->setSearchPaths(searchPaths);
 }
 
-void AppDelegate::createAndRunScene() {
+void AppDelegate::_createAndRunScene() {
 	auto scene = GameScene::createScene();
 	Director::getInstance()->runWithScene(scene);
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-	initOpenGL();
-	initDirector();
-	initMultiResolution();
+	_initOpenGL();
+	_initDirector();
+	_initMultiResolution();
 	register_all_packages();
-	createAndRunScene();
+	_createAndRunScene();
 
 	return true;
 }

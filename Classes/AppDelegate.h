@@ -9,6 +9,12 @@
 The reason for implement as private inheritance is to hide some interface call by Director.
 */
 class  AppDelegate : private cocos2d::Application {
+private:
+	void _initOpenGL();
+	void _initMultiResolution();
+	void _initDirector();
+	void _createAndRunScene();
+
 public:
 	AppDelegate();
 	virtual ~AppDelegate();
@@ -33,12 +39,6 @@ public:
 	@param  the pointer of the application
 	*/
 	virtual void applicationWillEnterForeground();
-
-private:
-	void initOpenGL();
-	void initMultiResolution();
-	void initDirector();
-	void createAndRunScene();
 };
 
 #endif // _APP_DELEGATE_H_
