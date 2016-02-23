@@ -97,6 +97,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	_initDirector();
 	_initMultiResolution();
 	register_all_packages();
+
+	// preload
+	preloadSpriteCache();
+
 	_createAndRunScene();
 
 	return true;
@@ -116,4 +120,10 @@ void AppDelegate::applicationWillEnterForeground() {
 
 	// if you use SimpleAudioEngine, it must resume here
 	// SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+
+void AppDelegate::preloadSpriteCache() {
+	auto spriteCache = SpriteFrameCache::getInstance();
+	
+	spriteCache->addSpriteFramesWithFile("rockets.plist");
 }

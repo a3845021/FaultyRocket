@@ -9,13 +9,13 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{0,1}</string>
+                <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{22,48}</string>
+                <string>{22,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{24,52}</string>
+                <string>{24,34}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{22,48}}</string>
+                <string>{{1,1},{22,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -27,9 +27,9 @@
             <key>realTextureFileName</key>
             <string>rockets.png</string>
             <key>size</key>
-            <string>{24,50}</string>
+            <string>{24,34}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a4e6159f1ebf89cead0d2427ddb2e36e:aa2a121ed9087dfe252044daa16e9d1c:23ba688e9beedead50d7b676f3524196$</string>
+            <string>$TexturePacker:SmartUpdate:2b222e2f3615445cfd6fe81cd6a6648a:f4260ed2b2889025a84df07004ae9018:23ba688e9beedead50d7b676f3524196$</string>
             <key>textureFileName</key>
             <string>rockets.png</string>
         </dict>

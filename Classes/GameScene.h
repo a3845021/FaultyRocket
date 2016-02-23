@@ -1,38 +1,39 @@
-#ifndef __GAMESCENE_SCENE_H__
-#define __GAMESCENE_SCENE_H__
+#ifndef __GAME_SCENE_H__
+#define __GAME_SCENE_H__
 
 #include "cocos2d.h"
-#include "Rocket.h"
+#include "GameLayer.h"
 
-class GameScene : public cocos2d::Layer {
+USING_NS_CC;
+
+class GameScene : public Layer {
 private:
-	cocos2d::Size _screenSize;
-	cocos2d::Size _visibleSize;
-	cocos2d::Vec2 _visibleOrigin;
+	Size _visibleSize;
+	Vec2 _visibleOrigin;
 
-	// cocos2d::PhysicsWorld *_sceneWorld;
+	enum class State {
+		Starting,
+		Playing,
+		Gameover
+	};
 
-	cocos2d::SpriteFrameCache *_spriteCache;
-	// cocos2d::Sprite *_rocket;
+	State _state;
+	GameLayer* _layer;
 
-	Rocket _rocket;
-
-	// void _setPhysicsWorld(cocos2d::PhysicsWorld *world) {
-	// 	_sceneWorld = world;
-	// }
-
-	void _spawnRocket();
+	Rocket* _rocket;
 
 public:
-	static cocos2d::Scene* createScene();
-
-	virtual bool init();
-
-	// a selector callback
-	void menuCloseCallback(cocos2d::Ref* pSender);
-
-	// implement the "static create()" method manually
+	static Scene* createScene();
+	bool init();
 	CREATE_FUNC(GameScene);
+
+	void startPlay();
+
+	void update(float dt);
+
+	// ...
+
+	bool onTouchBegan(Touch* touch, Event* event);
 };
 
-#endif // __GAMESCENE_SCENE_H__
+#endif // __GAME_SCENE_H__

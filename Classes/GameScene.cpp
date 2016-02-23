@@ -1,61 +1,86 @@
 #include "GameScene.h"
+#include "GameLayer.h"
 #include "Definitions.h"
 
 USING_NS_CC;
 
 Scene* GameScene::createScene() {
-	// 'scene' is an autorelease object
 	auto scene = Scene::create();
-	// scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	auto game = GameScene::create();
 
-	// 'layer' is an autorelease object
-	auto layer = GameScene::create();
-	// layer->_setPhysicsWorld(scene->getPhysicsWorld());
+	scene->addChild(game);
 
-	// add layer as a child to scene
-	scene->addChild(layer);
-
-	// return the scene
 	return scene;
 }
 
-// on "init" you need to initialize your instance
 bool GameScene::init() {
-	// super init first
 	if ( !Layer::init() ) {
 		return false;
 	}
 
 	CCLOG("Game scene initialize...");
 
-	_screenSize = Director::getInstance()->getWinSize();
+	_state = State::Starting;
+
 	_visibleSize = Director::getInstance()->getVisibleSize();
 	_visibleOrigin = Director::getInstance()->getVisibleOrigin();
 
-	_spriteCache = SpriteFrameCache::getInstance();
-	// adding spritesheets
-	_spriteCache->addSpriteFramesWithFile("rockets.plist");
+	_layer = GameLayer::create();
+	addChild(_layer, 0);
 
-	// edge world
-	// auto edgeBody = PhysicsBody::createEdgeBox(_visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
-	// auto edgeNode = Node::create();
-	// edgeNode->setPosition(Point(_visibleSize.width * 0.5f + _visibleOrigin.x,
-	//                             _visibleSize.height * 0.5f + _visibleOrigin.y));
-	// edgeNode->setPhysicsBody(edgeBody);
-	// this->addChild(edgeNode);
 
-	// spawn rocket
-	_spawnRocket();
+	// create rocket
+	_rocket = Rocket::create();
+	_rocket->setPosition(_visibleSize.width * 0.5f + _visibleOrigin.x,
+	                     _visibleSize.height * ROCKET_BOTTOM + _visibleOrigin.y);
+	addChild(_rocket, 1);
 
-	// this->schedule(schedule_selector(GameScene::_spawnRocket), ROCKET_SPAWN_FREQUENCY * _visibleSize.height);
+	// touch
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
-	// _rocket = Sprite::createWithSpriteFrameName("rocket-0.png");
-	// _rocket->setPosition(_screenSize.width * 0.5f, _screenSize.height * 0.1f);
-	// this->addChild(_rocket);
+	// start update
+	schedule(schedule_selector(GameScene::update));
 
 	return true;
 }
 
-void GameScene::_spawnRocket() {
-	_rocket.spawn(this);
+void GameScene::startPlay() {
+	_layer->addAsteroids();
+	_rocket->wobble();
+	_state = State::Playing;
 }
+
+void GameScene::update(float dt) {
+	// state playing
+	_rocket->update(dt);
+	_layer->update(dt);
+	// ... check collision
+	// ...
+}
+
+bool GameScene::onTouchBegan(Touch* touch, Event* event) {
+	if (_state == State::Starting) {
+		startPlay();
+		return true;
+	} else if (_state == State::Playing) {
+		_rocket->boost();
+		return true;
+	}
+
+	return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

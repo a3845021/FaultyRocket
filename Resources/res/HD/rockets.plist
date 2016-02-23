@@ -11,11 +11,11 @@
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{44,99}</string>
+                <string>{44,63}</string>
                 <key>spriteSourceSize</key>
-                <string>{44,99}</string>
+                <string>{44,63}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{44,99}}</string>
+                <string>{{1,1},{44,63}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -27,9 +27,9 @@
             <key>realTextureFileName</key>
             <string>rockets.png</string>
             <key>size</key>
-            <string>{46,101}</string>
+            <string>{46,65}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5f4bd3f3277fca2911b4de726c2759ca:42aa1dddc16da9652dcac78f609c4f2b:23ba688e9beedead50d7b676f3524196$</string>
+            <string>$TexturePacker:SmartUpdate:679e47c28ed128e4e2eaf00be847de63:858776aa8a1021b14964fa55c76c40f4:23ba688e9beedead50d7b676f3524196$</string>
             <key>textureFileName</key>
             <string>rockets.png</string>
         </dict>
