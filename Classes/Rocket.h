@@ -12,7 +12,9 @@ private:
 
 	Action* _wobbleTween;
 	Vec2 _velocity;
+	Point _nextPosition;
 	float _speedBoost;
+	bool _isBoosting;
 
 public:
 	Rocket();
@@ -21,6 +23,14 @@ public:
 	void update(float dt);
 	void boost();
 	void wobble();
+
+	inline void setNextPosition(Point position) {
+		_nextPosition = position;
+	};
+
+	inline virtual void place () {
+		setPosition(_nextPosition);
+	};
 
 	CREATE_FUNC(Rocket);
 };

@@ -31,8 +31,8 @@ bool GameScene::init() {
 
 	// create rocket
 	_rocket = Rocket::create();
-	_rocket->setPosition(_visibleSize.width * 0.5f + _visibleOrigin.x,
-	                     _visibleSize.height * ROCKET_BOTTOM + _visibleOrigin.y);
+	_rocket->setNextPosition(Point(_visibleSize.width * 0.5f + _visibleOrigin.x,
+	                               _visibleSize.height * ROCKET_BOTTOM + _visibleOrigin.y));
 	addChild(_rocket, 1);
 
 	// touch
@@ -56,6 +56,8 @@ void GameScene::update(float dt) {
 	// state playing
 	_rocket->update(dt);
 	_layer->update(dt);
+
+	_rocket->place();
 	// ... check collision
 	// ...
 }

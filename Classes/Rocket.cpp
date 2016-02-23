@@ -15,7 +15,9 @@ bool Rocket::init() {
 	}
 
 	_velocity = Vec2(0.0f, 0.0f);
+	_nextPosition = Point(0.0f, 0.0f);
 	_speedBoost = 0.0f;
+	_isBoosting = false;
 
 	setAnchorPoint(Point(0.5f, 0.5f));
 
@@ -43,6 +45,7 @@ void Rocket::update(float dt) {
 	} else {
 		// resume actions
 		resume();
+		_isBoosting = false;
 		// wobble
 		_velocity.x = sin(CC_DEGREES_TO_RADIANS(rotation)) * ROCKET_SPEED;
 		// lower boundary
@@ -53,15 +56,16 @@ void Rocket::update(float dt) {
 		}
 	}
 
-	position += _velocity * dt;
-
-	setPosition(position);
+	_nextPosition += _velocity * dt;
 }
 
 void Rocket::boost() {
-	_speedBoost = ROCKET_SPEED_BOOST;
-	// pause actions
-	pause();
+	if (!_isBoosting) {
+		_speedBoost = ROCKET_SPEED_BOOST;
+		// pause actions
+		pause();
+		_isBoosting = true;
+	}
 }
 
 void Rocket::wobble() {
