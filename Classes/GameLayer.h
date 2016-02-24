@@ -23,6 +23,9 @@ public:
 	void addAsteroids();
 	void update(float dt);
 
+	bool checkTopBoundary(Rocket* rocket);
+	int checkLeftRightBoundaries(Rocket* rocket);
+
 	CREATE_FUNC(GameLayer);
 };
 

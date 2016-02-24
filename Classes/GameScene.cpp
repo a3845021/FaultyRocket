@@ -57,6 +57,20 @@ void GameScene::update(float dt) {
 	_rocket->update(dt);
 	_layer->update(dt);
 
+	// check boundaries
+	if (_layer->checkTopBoundary(_rocket)) {
+		_rocket->setNextPosition(Point(_rocket->getNextPosition().x,
+		                               _visibleSize.height + _visibleOrigin.y));
+	}
+	auto checkLeftRightBoundaries = _layer->checkLeftRightBoundaries(_rocket);
+	if (checkLeftRightBoundaries == 1) {
+		_rocket->setNextPosition(Point(_visibleOrigin.x,
+		                               _rocket->getNextPosition().y));
+	} else if (checkLeftRightBoundaries == 2) {
+		_rocket->setNextPosition(Point(_visibleSize.width + _visibleOrigin.x,
+		                               _rocket->getNextPosition().y));
+	}
+
 	_rocket->place();
 	// ... check collision
 	// ...

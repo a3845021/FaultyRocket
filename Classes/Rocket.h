@@ -24,6 +24,10 @@ public:
 	void boost();
 	void wobble();
 
+	Point getNextPosition() {
+		return _nextPosition;
+	};
+
 	inline void setNextPosition(Point position) {
 		_nextPosition = position;
 	};
