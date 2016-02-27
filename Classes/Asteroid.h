@@ -8,12 +8,15 @@ USING_NS_CC;
 class Asteroid : public Node {
 private:
 	Sprite* _sprite;
+	
+	// float _angularVelocity;
+	// Vec2 _velocity;
 
 public:
 	Asteroid();
 	bool init();
 
-	// ...
+	// void update(float dt);
 
 	CREATE_FUNC(Asteroid);
 };

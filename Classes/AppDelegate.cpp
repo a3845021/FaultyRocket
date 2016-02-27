@@ -126,4 +126,5 @@ void AppDelegate::preloadSpriteCache() {
 	auto spriteCache = SpriteFrameCache::getInstance();
 	
 	spriteCache->addSpriteFramesWithFile("rockets.plist");
+	spriteCache->addSpriteFramesWithFile("asteroids.plist");
 }

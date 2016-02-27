@@ -4,18 +4,18 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>rocket-0.png</key>
+            <key>asteroid-0.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{42,61}</string>
+                <string>{37,50}</string>
                 <key>spriteSourceSize</key>
-                <string>{44,63}</string>
+                <string>{39,52}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{42,61}}</string>
+                <string>{{1,1},{37,50}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -25,13 +25,13 @@
             <key>format</key>
             <integer>3</integer>
             <key>realTextureFileName</key>
-            <string>rockets.png</string>
+            <string>asteroids.png</string>
             <key>size</key>
-            <string>{44,63}</string>
+            <string>{39,52}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b4377aeb42d9182cb1dee096d9054e0c:858776aa8a1021b14964fa55c76c40f4:23ba688e9beedead50d7b676f3524196$</string>
+            <string>$TexturePacker:SmartUpdate:b45d0ca0ea02460a854cfeb46d164cf2:4ce920c81f3b05c1fa2f36c104bbf6ac:c9503d2abe1badaea40a65c509bc397f$</string>
             <key>textureFileName</key>
-            <string>rockets.png</string>
+            <string>asteroids.png</string>
         </dict>
     </dict>
 </plist>
