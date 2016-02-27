@@ -10,7 +10,6 @@ private:
 	Size _visibleSize;
 	Vec2 _visibleOrigin;
 
-	PhysicsBody* _body;
 	Action* _wobbleTween;
 	Vec2 _velocity;
 	Point _nextPosition;

@@ -17,16 +17,10 @@ private:
 		Gameover
 	};
 
-	PhysicsWorld* _sceneWorld;
-
 	State _state;
 	GameLayer* _layer;
 
 	Rocket* _rocket;
-
-	void _setPhysicsWorld(PhysicsWorld* world) {
-		_sceneWorld = world;
-	}
 
 public:
 	static Scene* createScene();

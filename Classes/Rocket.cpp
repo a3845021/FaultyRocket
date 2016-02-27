@@ -19,10 +19,7 @@ bool Rocket::init() {
 	_speedBoost = 0.0f;
 	_isBoosting = false;
 
-	setAnchorPoint(Point(0.5f, 0.5f));
-
-	_body = PhysicsBody::createBox(Size(ROCKET_WIDTH, ROCKET_HEIGHT));
-	setPhysicsBody(_body);
+	setAnchorPoint(Point::ANCHOR_MIDDLE);
 
 	float start = ROCKET_WOBBLE_LIMIT / 2;
 	_wobbleTween = RepeatForever::create(Sequence::create(
@@ -32,8 +29,6 @@ bool Rocket::init() {
 	               ));
 	_wobbleTween->retain();
 	_wobbleTween->setTag(ROCKET_WOBBLE);
-
-	// _body->setVelocity(Vec2(40.0f, 0.0f));
 
 	return true;
 }
@@ -49,7 +44,7 @@ void Rocket::update(float dt) {
 		_velocity.y = cos(CC_DEGREES_TO_RADIANS(-rotation)) * _speedBoost;
 	} else {
 		// resume actions
-		// resume();
+		resume();
 		_isBoosting = false;
 		// wobble
 		_velocity.x = sin(CC_DEGREES_TO_RADIANS(rotation)) * ROCKET_SPEED;
@@ -61,14 +56,14 @@ void Rocket::update(float dt) {
 		}
 	}
 
-	_body->applyForce(_velocity);
+	_nextPosition += _velocity * dt;
 }
 
 void Rocket::boost() {
 	if (!_isBoosting) {
 		_speedBoost = ROCKET_SPEED_BOOST;
 		// pause actions
-		// pause();
+		pause();
 		_isBoosting = true;
 	}
 }
