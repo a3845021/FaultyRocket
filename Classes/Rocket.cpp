@@ -14,8 +14,8 @@ bool Rocket::init() {
 		return false;
 	}
 
-	_velocity = Vec2(0.0f, 0.0f);
-	_nextPosition = Point(0.0f, 0.0f);
+	_velocity = Vec2::ZERO;
+	_nextPosition = Point::ZERO;
 	_speedBoost = 0.0f;
 	_isBoosting = false;
 
@@ -23,12 +23,11 @@ bool Rocket::init() {
 
 	float start = ROCKET_WOBBLE_LIMIT / 2;
 	_wobbleTween = RepeatForever::create(Sequence::create(
-	                   EaseInOut::create(RotateTo::create(ROCKET_WOBBLE_DELAY, start), 1.0f),
-	                   EaseInOut::create(RotateTo::create(ROCKET_WOBBLE_DELAY, -start), 1.0f),
-	                   nullptr
-	               ));
+	        EaseInOut::create(RotateTo::create(ROCKET_WOBBLE_DELAY, start), 1.0f),
+	        EaseInOut::create(RotateTo::create(ROCKET_WOBBLE_DELAY, -start), 1.0f),
+	        nullptr
+	                                     ));
 	_wobbleTween->retain();
-	_wobbleTween->setTag(ROCKET_WOBBLE);
 
 	return true;
 }
@@ -37,9 +36,9 @@ void Rocket::update(float dt) {
 	auto rotation = getRotation();
 	auto position = getPosition();
 
-	if (_speedBoost > 50.0f) {
+	if (_speedBoost > 100.0f) {
 		// boost
-		_speedBoost -= 15.0f;
+		_speedBoost -= 20.0f;
 		_velocity.x = sin(CC_DEGREES_TO_RADIANS(rotation)) * _speedBoost;
 		_velocity.y = cos(CC_DEGREES_TO_RADIANS(-rotation)) * _speedBoost;
 	} else {

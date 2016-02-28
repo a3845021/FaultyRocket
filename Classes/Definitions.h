@@ -2,7 +2,6 @@
 #define __DEFINITIONS_H__
 
 #define COCOS2D_DEBUG 1
-#define CC_SPRITE_DEBUG_DRAW 1
 
 // rocket
 #define ROCKET_WIDTH 44.0f
@@ -11,11 +10,12 @@
 #define ROCKET_WOBBLE_LIMIT 160.0f
 #define ROCKET_WOBBLE_DELAY 0.5f
 #define ROCKET_SPEED 300.0f
-#define ROCKET_SPEED_BOOST 620.0f;
-#define ROCKET_SPEED_RETURN 200.0f;
+#define ROCKET_SPEED_BOOST 720.0f
+#define ROCKET_SPEED_RETURN 200.0f
 
 // asteroids
-#define ASTEROID_VELOCITY 400.0f;
+#define ASTEROID_VELOCITY 512.0f
+#define ASTEROID_DELAY 760.0f
 
 // layer
 // ...

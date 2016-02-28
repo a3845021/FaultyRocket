@@ -10,9 +10,10 @@ private:
 	Size _visibleSize;
 	Vec2 _visibleOrigin;
 
-	Action* _wobbleTween;
 	Vec2 _velocity;
 	Point _nextPosition;
+
+	Action* _wobbleTween;
 	float _speedBoost;
 	bool _isBoosting;
 
@@ -27,11 +28,9 @@ public:
 	Point getNextPosition() {
 		return _nextPosition;
 	};
-
 	inline void setNextPosition(Point position) {
 		_nextPosition = position;
 	};
-
 	inline virtual void place () {
 		setPosition(_nextPosition);
 	};

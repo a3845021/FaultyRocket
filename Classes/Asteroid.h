@@ -7,16 +7,33 @@ USING_NS_CC;
 
 class Asteroid : public Node {
 private:
-	Sprite* _sprite;
+	Size _visibleSize;
+	Vec2 _visibleOrigin;
 	
-	float _angularVelocity;
+	Sprite* _sprite;
+
 	Vec2 _velocity;
+	Point _nextPosition;
+
+	Action* _rotationTween;
+	Action* _fallTween;
 
 public:
 	Asteroid();
 	bool init();
 
 	void update(float dt);
+	void recycle();
+
+	Point getNextPosition() {
+		return _nextPosition;
+	};
+	inline void setNextPosition(Point position) {
+		_nextPosition = position;
+	};
+	inline virtual void place () {
+		setPosition(_nextPosition);
+	};
 
 	CREATE_FUNC(Asteroid);
 };

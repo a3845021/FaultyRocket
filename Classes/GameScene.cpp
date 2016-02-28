@@ -26,6 +26,8 @@ bool GameScene::init() {
 	_visibleSize = Director::getInstance()->getVisibleSize();
 	_visibleOrigin = Director::getInstance()->getVisibleOrigin();
 
+	CCLOG("Visible size: %fx%f", _visibleSize.width, _visibleSize.height);
+
 	// layer
 	_layer = GameLayer::create();
 	addChild(_layer, 0);
@@ -48,7 +50,7 @@ bool GameScene::init() {
 }
 
 void GameScene::startPlay() {
-	_layer->addAsteroids();
+	_layer->startAsteroids();
 	_rocket->wobble();
 	_state = State::Playing;
 }

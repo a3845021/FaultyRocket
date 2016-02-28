@@ -13,6 +13,7 @@ private:
 	Vec2 _visibleOrigin;
 
 	float _speed;
+	Action* _asteroidsLoop;
 
 	std::vector<Asteroid*> _asteroids;
 
@@ -20,7 +21,8 @@ public:
 	GameLayer();
 	bool init();
 
-	void addAsteroids();
+	void startAsteroids();
+	void addAsteroid();
 	void update(float dt);
 
 	bool checkTopBoundary(Rocket* rocket);

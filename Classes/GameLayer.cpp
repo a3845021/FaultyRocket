@@ -17,15 +17,35 @@ bool GameLayer::init() {
 
 	// ... sprite background
 
+	auto asteroidsLoopCallback = CallFunc::create([&]() {
+		GameLayer::addAsteroid();
+	});
+	_asteroidsLoop = RepeatForever::create(Sequence::create(
+	        DelayTime::create(ASTEROID_DELAY / _visibleSize.width),
+	        asteroidsLoopCallback,
+	        nullptr
+	                                       ));
+	_asteroidsLoop->retain();
+
 	return true;
 }
 
-void GameLayer::addAsteroids() {
-	// ...
+void GameLayer::startAsteroids() {
+	runAction(_asteroidsLoop);
+}
+
+void GameLayer::addAsteroid() {
+	if (_asteroids.size() < 5) {
+		auto asteroid = Asteroid::create();
+		addChild(asteroid);
+		_asteroids.push_back(asteroid);
+	}
 }
 
 void GameLayer::update(float dt) {
-	// ...
+	for (size_t i = 0; i < _asteroids.size(); ++i) {
+		// ...
+	}
 }
 
 bool GameLayer::checkTopBoundary(Rocket* rocket) {
