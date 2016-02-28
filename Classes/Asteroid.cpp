@@ -20,7 +20,7 @@ bool Asteroid::init() {
 	_sprite->setAnchorPoint(Point::ANCHOR_MIDDLE);
 	addChild(_sprite);
 
-    Asteroid::recycle();
+	Asteroid::recycle();
 
 	_rotationTween = RepeatForever::create(Sequence::create(
 	        RotateBy::create(4.0f, 180.0f),
@@ -31,8 +31,9 @@ bool Asteroid::init() {
 	auto asteroidEndCallback = CallFunc::create([&]() {
 		Asteroid::recycle();
 	});
+	float duration = (ASTEROID_DELAY / _visibleSize.width) * floor(_visibleSize.height / ASTEROID_VELOCITY + 0.5);
 	_fallTween = RepeatForever::create(Sequence::create(
-	                                       MoveBy::create(3.0f, Vec2(0, -_visibleSize.height - 200.0f)),
+	                                       MoveBy::create(duration, Vec2(0, -_visibleSize.height - 200.0f)),
 	                                       asteroidEndCallback,
 	                                       nullptr
 	                                   ));
@@ -44,7 +45,12 @@ bool Asteroid::init() {
 	return true;
 }
 
+// ... set animations
+
 void Asteroid::update(float dt) {
+    // auto position = getPosition();
+    // _nextPosition = position;
+
 	// ...
 
 	// _nextPosition += _velocity * dt;

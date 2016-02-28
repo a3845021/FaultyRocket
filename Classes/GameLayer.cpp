@@ -35,17 +35,17 @@ void GameLayer::startAsteroids() {
 }
 
 void GameLayer::addAsteroid() {
-	if (_asteroids.size() < 5) {
+	if (_asteroids.size() < floor(_visibleSize.height / ASTEROID_VELOCITY + 0.5)) {
 		auto asteroid = Asteroid::create();
 		addChild(asteroid);
 		_asteroids.push_back(asteroid);
+	} else {
+		stopAction(_asteroidsLoop);
 	}
 }
 
 void GameLayer::update(float dt) {
-	for (size_t i = 0; i < _asteroids.size(); ++i) {
-		// ...
-	}
+	// ...
 }
 
 bool GameLayer::checkTopBoundary(Rocket* rocket) {

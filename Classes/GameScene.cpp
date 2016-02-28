@@ -34,8 +34,8 @@ bool GameScene::init() {
 
 	// create rocket
 	_rocket = Rocket::create();
-	_rocket->setNextPosition(Point(_visibleSize.width * 0.5f + _visibleOrigin.x,
-	                               _visibleSize.height * ROCKET_BOTTOM + _visibleOrigin.y));
+	_rocket->setPosition(Point(_visibleSize.width * 0.5f + _visibleOrigin.x,
+	                           _visibleSize.height * ROCKET_BOTTOM + _visibleOrigin.y));
 	addChild(_rocket, 1);
 
 	// touch
@@ -75,7 +75,6 @@ void GameScene::update(float dt) {
 	}
 
 	_rocket->place();
-	// ...
 }
 
 bool GameScene::onTouchBegan(Touch* touch, Event* event) {
