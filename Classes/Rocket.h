@@ -31,7 +31,7 @@ public:
 	inline void setNextPosition(Point position) {
 		_nextPosition = position;
 	};
-	inline virtual void place () {
+	inline virtual void place() {
 		setPosition(_nextPosition);
 	};
 

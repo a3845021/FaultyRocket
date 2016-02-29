@@ -1,5 +1,5 @@
-#include "Rocket.h"
 #include "Definitions.h"
+#include "Rocket.h"
 
 USING_NS_CC;
 

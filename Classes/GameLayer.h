@@ -13,6 +13,7 @@ private:
 	Vec2 _visibleOrigin;
 
 	float _speed;
+	float _asteroidsDelay;
 	Action* _asteroidsLoop;
 
 	std::vector<Asteroid*> _asteroids;
@@ -27,6 +28,8 @@ public:
 
 	bool checkTopBoundary(Rocket* rocket);
 	int checkLeftRightBoundaries(Rocket* rocket);
+
+	virtual void place();
 
 	CREATE_FUNC(GameLayer);
 };

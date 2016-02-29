@@ -1,11 +1,18 @@
 #ifndef __DEFINITIONS_H__
 #define __DEFINITIONS_H__
 
-#define COCOS2D_DEBUG 1
+#define COCOS2D_DEBUG 0
+#define COCOS2D_DEBUG_BODIES 1
+#define CIRCLE_NUMBER_SEGMENTS 12
+
+// app
+#define DESIGN_WIDTH 768
+#define DESIGN_HEIGHT 1024
 
 // rocket
 #define ROCKET_WIDTH 44.0f
 #define ROCKET_HEIGHT 44.0f
+#define ROCKET_RADIUS 22.0f
 #define ROCKET_BOTTOM 0.18f
 #define ROCKET_WOBBLE_LIMIT 160.0f
 #define ROCKET_WOBBLE_DELAY 0.5f
@@ -14,8 +21,10 @@
 #define ROCKET_SPEED_RETURN 200.0f
 
 // asteroids
-#define ASTEROID_VELOCITY 384.0f
-#define ASTEROID_DELAY 512.0f
+#define ASTEROID_RADIUS 37.0f
+#define ASTEROID_MARGIN 74.0f
+#define ASTEROID_SPEED 560.0f
+#define ASTEROID_DELAY 440.0f
 
 // layer
 // ...

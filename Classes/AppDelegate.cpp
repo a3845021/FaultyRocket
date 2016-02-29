@@ -1,3 +1,4 @@
+#include "Definitions.h"
 #include "AppDelegate.h"
 #include "GameScene.h"
 
@@ -11,7 +12,7 @@ typedef struct tagResource {
 static Resource ultraResource = { cocos2d::Size(1536, 2048), "res/HDR" };
 static Resource hiResource = { cocos2d::Size(768, 1024), "res/HD" };
 static Resource stdResource = { cocos2d::Size(384, 512), "res/SD" };
-static cocos2d::Size designResolutionSize = cocos2d::Size(768, 1024);
+static Size designResolutionSize = Size(DESIGN_WIDTH, DESIGN_HEIGHT);
 
 AppDelegate::AppDelegate() {
 

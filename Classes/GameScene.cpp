@@ -1,6 +1,6 @@
+#include "Definitions.h"
 #include "GameScene.h"
 #include "GameLayer.h"
-#include "Definitions.h"
 
 USING_NS_CC;
 
@@ -75,6 +75,7 @@ void GameScene::update(float dt) {
 	}
 
 	_rocket->place();
+	_layer->place();
 }
 
 bool GameScene::onTouchBegan(Touch* touch, Event* event) {

@@ -1,5 +1,5 @@
-#include "GameLayer.h"
 #include "Definitions.h"
+#include "GameLayer.h"
 
 USING_NS_CC;
 
@@ -17,11 +17,14 @@ bool GameLayer::init() {
 
 	// ... sprite background
 
+	// define asterodis parameters
+	_asteroidsDelay = ASTEROID_DELAY / _visibleSize.width;
+
 	auto asteroidsLoopCallback = CallFunc::create([&]() {
 		GameLayer::addAsteroid();
 	});
 	_asteroidsLoop = RepeatForever::create(Sequence::create(
-	        DelayTime::create(ASTEROID_DELAY / _visibleSize.width),
+	        DelayTime::create(_asteroidsDelay),
 	        asteroidsLoopCallback,
 	        nullptr
 	                                       ));
@@ -35,16 +38,34 @@ void GameLayer::startAsteroids() {
 }
 
 void GameLayer::addAsteroid() {
-	if (_asteroids.size() < floor(_visibleSize.height / ASTEROID_VELOCITY + 0.5)) {
-		auto asteroid = Asteroid::create();
-		addChild(asteroid);
-		_asteroids.push_back(asteroid);
-	} else {
-		stopAction(_asteroidsLoop);
+	for (size_t i = 0; i < _asteroids.size(); ++i) {
+		auto asteroid = _asteroids[i];
+		if (asteroid->getPositionY() < _visibleOrigin.y - ASTEROID_MARGIN) {
+			// use created asteroid
+			asteroid->recycle();
+			return;
+		}
 	}
+	// create new asteroid
+	auto asteroid = Asteroid::create();
+	addChild(asteroid);
+	asteroid->launch();
+	_asteroids.push_back(asteroid);
 }
 
 void GameLayer::update(float dt) {
+	for (size_t i = 0; i < _asteroids.size(); ++i) {
+		_asteroids[i]->update(dt);
+	}
+
+	// ...
+}
+
+void GameLayer::place() {
+	for (size_t i = 0; i < _asteroids.size(); ++i) {
+		_asteroids[i]->place();
+	}
+
 	// ...
 }
 
