@@ -1,6 +1,6 @@
 #include "Definitions.h"
 #include "AppDelegate.h"
-#include "GameScene.h"
+#include "MenuScene.h"
 
 USING_NS_CC;
 
@@ -89,8 +89,8 @@ void AppDelegate::_initMultiResolution() {
 }
 
 void AppDelegate::_createAndRunScene() {
-	auto scene = GameScene::createScene();
-	Director::getInstance()->runWithScene(scene);
+	auto menuScene = MenuScene::createScene();
+	Director::getInstance()->runWithScene(menuScene);
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
@@ -125,7 +125,8 @@ void AppDelegate::applicationWillEnterForeground() {
 
 void AppDelegate::preloadSpriteCache() {
 	auto spriteCache = SpriteFrameCache::getInstance();
-	
+
+	spriteCache->addSpriteFramesWithFile("ui.plist");
 	spriteCache->addSpriteFramesWithFile("rockets.plist");
 	spriteCache->addSpriteFramesWithFile("asteroids.plist");
 }

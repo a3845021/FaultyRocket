@@ -2,7 +2,7 @@
 #define __DEFINITIONS_H__
 
 #define COCOS2D_DEBUG 0
-#define COCOS2D_DEBUG_BODIES 1
+#define COCOS2D_DEBUG_BODIES 0
 #define CIRCLE_NUMBER_SEGMENTS 12
 
 // app
@@ -24,7 +24,7 @@
 #define ASTEROID_RADIUS 37.0f
 #define ASTEROID_MARGIN 74.0f
 #define ASTEROID_SPEED 560.0f
-#define ASTEROID_DELAY 440.0f
+#define ASTEROID_DELAY 380.0f
 
 // layer
 // ...

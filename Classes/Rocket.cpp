@@ -5,8 +5,13 @@ USING_NS_CC;
 
 Rocket::Rocket()
 	: _visibleSize(Director::getInstance()->getVisibleSize())
-	, _visibleOrigin(Director::getInstance()->getVisibleOrigin()) {
-
+	, _visibleOrigin(Director::getInstance()->getVisibleOrigin())
+	, _radius(ROCKET_RADIUS)
+	, _velocity(Vec2::ZERO)
+	, _nextPosition(Point::ZERO)
+	, _speedBoost(0.0f)
+	, _isBoosting(false) {
+	setAnchorPoint(Point::ANCHOR_MIDDLE);
 }
 
 bool Rocket::init() {
@@ -14,12 +19,20 @@ bool Rocket::init() {
 		return false;
 	}
 
-	_velocity = Vec2::ZERO;
-	_nextPosition = Point::ZERO;
-	_speedBoost = 0.0f;
-	_isBoosting = false;
+	_contentSize = getContentSize();
+	_nextPosition = getPosition();
 
-	setAnchorPoint(Point::ANCHOR_MIDDLE);
+#if (COCOS2D_DEBUG_BODIES)
+	_debugCircle = DrawNode::create();
+	_debugCircle->drawCircle(Vec2(_contentSize.width * 0.5f, _contentSize.height * 0.5f),
+	                         _radius,
+	                         CC_DEGREES_TO_RADIANS(90),
+	                         CIRCLE_NUMBER_SEGMENTS,
+	                         false,
+	                         Color4F::MAGENTA);
+	_debugCircle->setAnchorPoint(Point::ANCHOR_MIDDLE);
+	addChild(_debugCircle);
+#endif
 
 	float start = ROCKET_WOBBLE_LIMIT / 2;
 	_wobbleTween = RepeatForever::create(Sequence::create(
@@ -67,6 +80,12 @@ void Rocket::boost() {
 		pause();
 		_isBoosting = true;
 	}
+}
+
+void Rocket::die() {
+	CCLOG("Die!");
+	setVisible(false);
+	stopAllActions();
 }
 
 void Rocket::wobble() {

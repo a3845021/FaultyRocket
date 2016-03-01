@@ -83,3 +83,12 @@ int GameLayer::checkLeftRightBoundaries(Rocket* rocket) {
 	}
 	return 0;
 }
+
+bool GameLayer::checkCollision(Rocket* rocket) {
+	for (auto asteroid : _asteroids) {
+		if (asteroid->checkCollision(rocket)) {
+			return true;
+		}
+	}
+	return false;
+}

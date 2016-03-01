@@ -28,6 +28,7 @@ bool Asteroid::init() {
 #if (COCOS2D_DEBUG_BODIES)
 	_debugCircle = DrawNode::create();
 	_debugCircle->drawCircle(Vec2::ZERO, _radius, CC_DEGREES_TO_RADIANS(90), CIRCLE_NUMBER_SEGMENTS, false, Color4F::ORANGE);
+	_debugCircle->setAnchorPoint(Point::ANCHOR_MIDDLE);
 	addChild(_debugCircle);
 #endif
 
@@ -48,8 +49,6 @@ void Asteroid::launch() {
 	_velocity.y = -ASTEROID_SPEED;
 }
 
-// ... set animations
-
 void Asteroid::update(float dt) {
 	auto position = getPosition();
 	_nextPosition = position;
@@ -63,4 +62,12 @@ void Asteroid::recycle() {
 	auto position = Point(CCRANDOM_0_1() * _visibleSize.width + _visibleOrigin.x,
 	                      _visibleOrigin.y + _visibleSize.height + ASTEROID_MARGIN);
 	setPosition(position);
+}
+
+bool Asteroid::checkCollision(Rocket* rocket) {
+	auto distance = getPosition().getDistance(rocket->getPosition());
+	if (distance < _radius + rocket->getRadius()) {
+		return true;
+	}
+	return false;
 }

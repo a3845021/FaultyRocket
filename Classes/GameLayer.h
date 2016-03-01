@@ -21,6 +21,7 @@ private:
 public:
 	GameLayer();
 	bool init();
+	CREATE_FUNC(GameLayer);
 
 	void startAsteroids();
 	void addAsteroid();
@@ -28,10 +29,9 @@ public:
 
 	bool checkTopBoundary(Rocket* rocket);
 	int checkLeftRightBoundaries(Rocket* rocket);
+	bool checkCollision(Rocket* rocket);
 
 	virtual void place();
-
-	CREATE_FUNC(GameLayer);
 };
 
 #endif // __GAME_LAYER_H__

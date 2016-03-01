@@ -2,6 +2,7 @@
 #define __ASTEROID_H__
 
 #include "cocos2d.h"
+#include "Rocket.h"
 
 USING_NS_CC;
 
@@ -27,10 +28,13 @@ private:
 public:
 	Asteroid();
 	bool init();
+	CREATE_FUNC(Asteroid);
 
 	void update(float dt);
 	void recycle();
 	void launch();
+
+	bool checkCollision(Rocket* rocket);
 
 	Point getNextPosition() {
 		return _nextPosition;
@@ -41,8 +45,6 @@ public:
 	inline virtual void place() {
 		setPosition(_nextPosition);
 	};
-
-	CREATE_FUNC(Asteroid);
 };
 
 #endif // __ASTEROID_H__

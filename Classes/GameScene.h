@@ -28,6 +28,7 @@ public:
 	CREATE_FUNC(GameScene);
 
 	void startPlay();
+	void gameOver();
 
 	void update(float dt);
 
